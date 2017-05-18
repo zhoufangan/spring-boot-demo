@@ -1,4 +1,4 @@
 # Initializers
 # org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 # com.zhoufa.data.autoconfiguration.DynamicDataSourceAutoConfiguration \
-# com.zhoufa.data.mybatis.SqlSessionAutoConfiguration
+# com.zhoufa.data.service.SqlSessionAutoConfiguration

@@ -24,6 +24,8 @@
         <module>demo-11-dubbo-parent</module>
         <module>demo-12-redis</module>
         <module>demo-13-atomikos</module>
+        <module>demo-14-mybatis</module>
+        <module>demo-15-disconf</module>
     </modules>
 
     <groupId>com.zhoufa</groupId>

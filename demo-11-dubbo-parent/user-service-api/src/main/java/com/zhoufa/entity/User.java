@@ -1,11 +1,12 @@
-package com.zhoufa.model;
+package com.zhoufa.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author zhoufangan Created by zhoufangan on 17/3/11.
  */
-public class User {
+public class User implements Serializable{
 
     private int userId;
     private String userName;

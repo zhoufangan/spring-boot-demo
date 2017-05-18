@@ -1,7 +1,7 @@
 package com.zhoufa.service;
 
 import com.zhoufa.dao.UserMapper;
-import com.zhoufa.model.User;
+import com.zhoufa.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -5,7 +5,7 @@
 
 <mapper namespace="com.zhoufa.dao.UserMapper">
 
-    <resultMap id="User" type="com.zhoufa.model.User">
+    <resultMap id="User" type="com.zhoufa.entity.User">
         <result column="user_id" property="userId"/>
         <result column="user_name" property="userName"/>
         <result column="user_age" property="userAge"/>
@@ -13,7 +13,7 @@
         <result column="create_time" property="createTime"/>
     </resultMap>
 
-    <insert id="insert" parameterType="com.zhoufa.model.User" keyProperty="userId" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.zhoufa.entity.User" keyProperty="userId" useGeneratedKeys="true">
 		insert into t_user
 		(
 			user_name, user_age, gender, create_time

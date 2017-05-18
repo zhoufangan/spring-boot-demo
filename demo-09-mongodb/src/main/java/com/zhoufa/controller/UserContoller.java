@@ -1,7 +1,7 @@
 package com.zhoufa.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.zhoufa.model.User;
+import com.zhoufa.entity.User;
 import com.zhoufa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.zhoufa.model;
+package com.zhoufa.entity;
 
 /**
  * @author zhoufangan Created by zhoufangan on 17/3/5.

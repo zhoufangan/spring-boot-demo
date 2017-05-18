@@ -1,6 +1,6 @@
 package com.zhoufa.service;
 
-import com.zhoufa.model.User;
+import com.zhoufa.entity.User;
 
 import java.util.List;
 import java.util.Map;

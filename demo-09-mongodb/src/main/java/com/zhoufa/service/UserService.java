@@ -1,13 +1,10 @@
 package com.zhoufa.service;
 
 import com.alibaba.fastjson.JSON;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.zhoufa.model.User;
+import com.zhoufa.entity.User;
 import com.zhoufa.mongo.IMongoService;
 import org.bson.BsonInt32;
 import org.bson.Document;
