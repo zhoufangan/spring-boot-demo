@@ -4,34 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.3.RELEASE</version>
-        <relativePath/>
+        <groupId>com.zhoufa</groupId>
+        <artifactId>spring-boot-demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <modules>
-        <module>demo-01-helloworld</module>
-        <module>demo-02-banner-profile</module>
-        <module>demo-03-auto-configuration</module>
-        <module>demo-04-starter-hello</module>
-        <module>demo-05-starter-test</module>
-        <module>demo-06-starter-web</module>
-        <module>demo-07-view-resolver</module>
-        <module>demo-08-filter-litener</module>
-        <module>demo-09-mongodb</module>
-        <module>demo-10-mysql</module>
-        <module>demo-11-dubbo-parent</module>
-        <module>demo-12-redis</module>
-        <module>demo-13-atomikos</module>
-    </modules>
-
-    <groupId>com.zhoufa</groupId>
-    <artifactId>spring-boot-demo</artifactId>
+    <artifactId>demo-06-starter-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>spring-boot-demo</name>
+    <name>demo-06-starter-web</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -40,11 +22,20 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <!--
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <dependency>
@@ -62,7 +53,6 @@
             </plugin>
         </plugins>
     </build>
-    -->
 
 
 </project>

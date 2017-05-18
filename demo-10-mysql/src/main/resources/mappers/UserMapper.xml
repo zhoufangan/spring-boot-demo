@@ -1,0 +1,53 @@
+<?xml version = "1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.zhoufa.dao.UserMapper">
+
+    <resultMap id="User" type="com.zhoufa.model.User">
+        <result column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_age" property="userAge"/>
+        <result column="gender" property="gender"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.zhoufa.model.User" keyProperty="userId" useGeneratedKeys="true">
+		insert into t_user
+		(
+			user_name, user_age, gender, create_time
+		)
+		values
+		(
+			#{userName}, #{userAge}, #{gender}, now()
+		)
+	</insert>
+
+    <delete id="delById" parameterType="int">
+		delete from t_user where user_id = #{user_id}
+	</delete>
+
+    <update id="modifyById" parameterType="Map">
+        update t_user
+        <set>
+            <if test="null != userName">user_name=#{userName},</if>
+            <if test="null != userAge">user_age=#{userAge},</if>
+            <if test="null != gender">gender=#{gender},</if>
+        </set>
+        where user_id = #{user_id}
+    </update>
+
+    <select id="queryById" parameterType="long" resultMap="User">
+		select * from t_user where user_id = #{user_id}
+	</select>
+
+    <select id="queryByUsername" parameterType="String" resultMap="User">
+		select * from t_user where user_name = #{user_name}
+	</select>
+
+    <select id="queryAll" resultMap="User">
+        select * from t_user
+    </select>
+
+</mapper>
