@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class Demo02BannerProfileApplication {
 
-    @Value("spring.profiles.active")
+    @Value("${spring.profiles.active}")
     private String currentProfiles;
 
     public static void main(String[] args) {
@@ -26,6 +26,7 @@ public class Demo02BannerProfileApplication {
         app.run(args);
     }
 
+    // http://127.0.0.1:8080/win/index
     @RequestMapping("/index")
     public String index() {
         return "currentProfiles=[" + currentProfiles + "]";

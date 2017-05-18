@@ -19,12 +19,14 @@ public class AuthorController {
     @Autowired
     private CharacterEncodingFilter characterEncodingFilter;
 
+    // http://127.0.0.1:8080/win/author/queryAuthor.htm
     @RequestMapping("queryAuthor.htm")
     @ResponseBody
     public String queryAuthor() {
         return "name=[" + authorSetting.getName() + "], age=[" + authorSetting.getAge() + "]";
     }
 
+    // http://127.0.0.1:8080/win/queryEncoding.htm
     @RequestMapping("queryEncoding.htm")
     @ResponseBody
     public String queryEncoding() {

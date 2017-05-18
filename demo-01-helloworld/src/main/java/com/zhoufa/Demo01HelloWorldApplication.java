@@ -18,6 +18,7 @@ public class Demo01HelloWorldApplication {
 		app.run(args);
 	}
 
+	// http://127.0.0.1:8080/index
 	@RequestMapping("/index")
 	public String index() {
 		return "welcome to spring-boot! hello world!";
