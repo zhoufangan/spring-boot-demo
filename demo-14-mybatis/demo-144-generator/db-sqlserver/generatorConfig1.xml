@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动-->
+    <classPathEntry location="sqljdbc4-4.4.jar"/>
+
+    <context id="SQLServerTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection
+                driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                connectionURL="jdbc:sqlserver://192.168.100.91;DatabaseName=BT_Wallet;sendStringParametersAsUnicode=false"
+                userId="Bw_dev"
+                password="btjf321!">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.zhoufa.entity" targetProject="../src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mappers" targetProject="../src/main/resources/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zhoufa.mapper" targetProject="../src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--生成对应表及类名-->
+        <table
+                tableName="z_SINAAccountStatement"
+                domainObjectName="SINAAccountStatement"
+                enableCountByExample="false"
+                enableUpdateByExample="false"
+                enableDeleteByExample="false"
+                enableSelectByExample="false"
+                selectByExampleQueryId="false">
+
+            <!--  -->
+
+            <!-- 如果设置为true,生成的model类会直接使用column本身的名字,而不会再使用驼峰命名方法 -->
+            <!-- 比如: BORN_DATE,生成的属性名字就是BORN_DATE,而不会是bornDate -->
+            <!-- 如果原来就是驼峰标识,useActualColumnNames=false就没有驼峰了 -->
+            <property name="useActualColumnNames" value="true"/>
+
+            <!-- MBG是使用java.util.regex.Matcher.replaceAll来替换searchString和replaceString的 -->
+            <!-- 如果使用了columnOverride元素,该属性无效; -->
+            <columnRenamingRule searchString="^F" replaceString=""/>
+        </table>
+    </context>
+</generatorConfiguration>
