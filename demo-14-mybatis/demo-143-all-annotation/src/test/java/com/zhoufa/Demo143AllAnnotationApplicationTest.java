@@ -2,7 +2,6 @@ package com.zhoufa;
 
 import com.zhoufa.domain.SINAAccountStatementRemoteDomain;
 import com.zhoufa.entity.SINAAccountStatement;
-import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,9 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Demo142StarterApplicationTest {
+public class Demo143AllAnnotationApplicationTest {
 
+    @SuppressWarnings("ALL")
     @Autowired
     private SINAAccountStatementRemoteDomain domain;
 

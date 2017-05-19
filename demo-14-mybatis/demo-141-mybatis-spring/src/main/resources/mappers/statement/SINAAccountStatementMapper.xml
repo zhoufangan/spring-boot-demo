@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhoufa.mapper.SINAAccountStatementMapper">
+
+    <resultMap id="BaseResultMapBo" type="com.zhoufa.entity.SINAAccountStatement">
+        <id column="FID" jdbcType="INTEGER" property="id"/>
+        <result column="FSinaOrderNo" jdbcType="VARCHAR" property="sinaOrderNo"/>
+        <result column="FMerchantOrderNo" jdbcType="VARCHAR" property="merchantOrderNo"/>
+        <result column="FBusinessType" jdbcType="INTEGER" property="businessType"/>
+        <result column="FBusinessOriginalType" jdbcType="VARCHAR" property="businessOriginalType"/>
+        <result column="FSubBusinessType" jdbcType="VARCHAR" property="subBusinessType"/>
+        <result column="FPayerName" jdbcType="VARCHAR" property="payerName"/>
+        <result column="FPayerAccount" jdbcType="VARCHAR" property="payerAccount"/>
+        <result column="FGoodsName" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="FOrderAmount" jdbcType="NUMERIC" property="orderAmount"/>
+        <result column="FCounterFee" jdbcType="NUMERIC" property="counterFee"/>
+        <result column="FRefundAmount" jdbcType="NUMERIC" property="refundAmount"/>
+        <result column="FPayeeName" jdbcType="VARCHAR" property="payeeName"/>
+        <result column="FPayeeAccount" jdbcType="VARCHAR" property="payeeAccount"/>
+        <result column="FOrderOriginalStatus" jdbcType="VARCHAR" property="orderOriginalStatus"/>
+        <result column="FOrderStatus" jdbcType="INTEGER" property="orderStatus"/>
+        <result column="FPaySuccessTime" jdbcType="TIMESTAMP" property="paySuccessTime"/>
+        <result column="FOrderCreateTime" jdbcType="TIMESTAMP" property="orderCreateTime"/>
+        <result column="FPaymentChannel" jdbcType="VARCHAR" property="paymentChannel"/>
+        <result column="FPaymentTerminal" jdbcType="VARCHAR" property="paymentTerminal"/>
+        <result column="FRemark" jdbcType="VARCHAR" property="remark"/>
+        <result column="FMerchantNo" jdbcType="VARCHAR" property="merchantNo"/>
+        <result column="FPlatformFee" jdbcType="NUMERIC" property="platformFee"/>
+        <result column="FPayerUid" jdbcType="VARCHAR" property="payerUid"/>
+        <result column="FPayeeUid" jdbcType="VARCHAR" property="payeeUid"/>
+        <result column="FMerchantBatchNo" jdbcType="VARCHAR" property="merchantBatchNo"/>
+        <result column="FTransactionBatchNo" jdbcType="VARCHAR" property="transactionBatchNo"/>
+        <result column="FAccountStatementBatchNoId" jdbcType="INTEGER" property="accountStatementBatchNoId"/>
+        <result column="FCreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="FIsDelete" jdbcType="BIT" property="isDelete"/>
+    </resultMap>
+
+    <insert id="insertBatch" useGeneratedKeys="true" parameterType="java.util.List">
+        insert into z_SINAAccountStatement
+        (
+        FSinaOrderNo, FMerchantOrderNo, FBusinessType, FBusinessOriginalType,
+        FSubBusinessType, FPayerName, FPayerAccount, FGoodsName, FOrderAmount,
+        FCounterFee, FRefundAmount, FPayeeName, FPayeeAccount,
+        FOrderOriginalStatus, FOrderStatus, FPaySuccessTime, FOrderCreateTime,
+        FPaymentChannel, FPaymentTerminal, FRemark, FMerchantNo,
+        FPlatformFee, FPayerUid, FPayeeUid, FMerchantBatchNo,
+        FTransactionBatchNo, FAccountStatementBatchNoId, FCreateTime
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.sinaOrderNo,jdbcType=VARCHAR},
+            #{item.merchantOrderNo,jdbcType=VARCHAR},
+            #{item.businessType,jdbcType=INTEGER},
+            #{item.businessOriginalType,jdbcType=VARCHAR},
+            #{item.subBusinessType,jdbcType=VARCHAR},
+            #{item.payerName,jdbcType=VARCHAR},
+            #{item.payerAccount,jdbcType=VARCHAR},
+            #{item.goodsName,jdbcType=VARCHAR},
+            #{item.orderAmount,jdbcType=NUMERIC},
+            #{item.counterFee,jdbcType=NUMERIC},
+            #{item.refundAmount,jdbcType=NUMERIC},
+            #{item.payeeName,jdbcType=VARCHAR},
+            #{item.payeeAccount,jdbcType=VARCHAR},
+            #{item.orderOriginalStatus,jdbcType=VARCHAR},
+            #{item.orderStatus,jdbcType=INTEGER},
+            #{item.paySuccessTime,jdbcType=TIMESTAMP},
+            #{item.orderCreateTime,jdbcType=TIMESTAMP},
+            #{item.paymentChannel,jdbcType=VARCHAR},
+            #{item.paymentTerminal,jdbcType=VARCHAR},
+            #{item.remark,jdbcType=VARCHAR},
+            #{item.merchantNo,jdbcType=VARCHAR},
+            #{item.platformFee,jdbcType=NUMERIC},
+            #{item.payerUid,jdbcType=VARCHAR},
+            #{item.payeeUid,jdbcType=VARCHAR},
+            #{item.merchantBatchNo,jdbcType=VARCHAR},
+            #{item.transactionBatchNo,jdbcType=VARCHAR},
+            #{item.accountStatementBatchNoId,jdbcType=INTEGER},
+            #{item.createTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryByBatchId" parameterType="int" resultMap="BaseResultMapBo">
+        select * from z_SINAAccountStatement where FAccountStatementBatchNoId=#{batchNoId}
+    </select>
+</mapper>

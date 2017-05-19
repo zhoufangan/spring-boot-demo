@@ -1,38 +1,32 @@
 package com.zhoufa;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import com.zhoufa.domain.SINAAccountStatementRemoteDomain;
+import com.zhoufa.entity.SINAAccountStatement;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * Unit test for simple Demo141MybatisSpringApplication.
- */
-public class Demo141MybatisSpringApplicationTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public Demo141MybatisSpringApplicationTest(String testName )
-    {
-        super( testName );
+import java.util.List;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class Demo141MybatisSpringApplicationTest {
+    @Autowired
+    private SINAAccountStatementRemoteDomain domain;
+
+    @Test
+    public void contextLoads() {
+
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( Demo141MybatisSpringApplicationTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void testqQueryByStatisticsDay() {
+        String statisticsTime = "20170509";
+        List<SINAAccountStatement> datas = domain.queryByStatisticsDay(statisticsTime);
+        for (SINAAccountStatement data : datas) {
+            System.out.println(data.getBusinessOriginalType());
+        }
     }
 }

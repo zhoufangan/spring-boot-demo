@@ -56,7 +56,7 @@
             <version>4.0.4</version>
         </dependency>
 
-        <!-- mybatis -->
+        <serviceatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
