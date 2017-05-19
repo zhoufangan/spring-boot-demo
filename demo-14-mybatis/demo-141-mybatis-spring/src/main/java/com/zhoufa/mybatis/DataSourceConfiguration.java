@@ -1,9 +1,7 @@
 package com.zhoufa.mybatis;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -23,32 +21,43 @@ import javax.sql.DataSource;
         value = {"config-datasource.properties"},
         encoding = "GBK"
 )
-@ConfigurationProperties(prefix = "spring.datasource")
-@AutoConfigureBefore
+//@ConfigurationProperties(prefix = "spring.datasource")
+//@AutoConfigureBefore
 public class DataSourceConfiguration {
 
-
-    // @Value("${spring.datasource.name}")
+    @Value("${spring.datasource.name}")
     private String name;
-    // @Value("spring.datasource.url")
+    @Value("${spring.datasource.url}")
     private String url;
-    // @Value("spring.datasource.username")
+    @Value("${spring.datasource.username}")
     private String username;
-    // @Value("spring.datasource.password")
+    @Value("${spring.datasource.password}")
     private String password;
-
+    @Value("${spring.datasource.filters}")
     private String filters;
+    @Value("${spring.datasource.maxActive}")
     private int maxActive;
+    @Value("${spring.datasource.initialSize}")
     private int initialSize;
+    @Value("${spring.datasource.maxWait}")
     private long maxWait;
+    @Value("${spring.datasource.minIdle}")
     private int minIdle;
+    @Value("${spring.datasource.timeBetweenEvictionRunsMillis}")
     private long timeBetweenEvictionRunsMillis;
+    @Value("${spring.datasource.minEvictableIdleTimeMillis}")
     private long minEvictableIdleTimeMillis;
+    @Value("${spring.datasource.validationQuery}")
     private String validationQuery;
+    @Value("${spring.datasource.testWhileIdle}")
     private boolean testWhileIdle;
+    @Value("${spring.datasource.testOnBorrow}")
     private boolean testOnBorrow;
+    @Value("${spring.datasource.testOnReturn}")
     private boolean testOnReturn;
+    @Value("${spring.datasource.poolPreparedStatements}")
     private boolean poolPreparedStatements;
+    @Value("${spring.datasource.maxOpenPreparedStatements}")
     private int maxOpenPreparedStatements;
 
     @Bean

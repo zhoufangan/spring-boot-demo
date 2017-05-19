@@ -5,9 +5,11 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -30,6 +32,7 @@ import javax.sql.DataSource;
 // 为了支持注解事务，增加了@EnableTransactionManagement注解，
 // 并且反回了一个PlatformTransactionManagerBean。
 @EnableTransactionManagement
+@AutoConfigureAfter(value = {DataSourceConfiguration.class})
 public class MybatisConfiguration implements IMybatisConfiguration, TransactionManagementConfigurer {
 
     @Autowired
@@ -60,15 +63,6 @@ public class MybatisConfiguration implements IMybatisConfiguration, TransactionM
     @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
-    }
-
-    // 1
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
-        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        mapperScannerConfigurer.setBasePackage("tk.service.springboot.mapper");
-        return mapperScannerConfigurer;
     }
 
     @Bean

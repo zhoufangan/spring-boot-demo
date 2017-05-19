@@ -1,7 +1,7 @@
 package com.zhoufa.service;
 
-import com.zhoufa.entity.SINAAccountStatement;
 import com.zhoufa.mapper.SINAAccountStatementMapper;
+import com.zhoufa.entity.SINAAccountStatement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
