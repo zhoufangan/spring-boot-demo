@@ -1,6 +1,6 @@
-package com.zhoufa.mapper2;
+package com.zhoufa.autogeneration2.mapper;
 
-import com.zhoufa.entity2.SINAAccountStatement;
+import com.zhoufa.autogeneration2.entity.SINAAccountStatement;
 import java.io.Serializable;
 import java.util.List;
 

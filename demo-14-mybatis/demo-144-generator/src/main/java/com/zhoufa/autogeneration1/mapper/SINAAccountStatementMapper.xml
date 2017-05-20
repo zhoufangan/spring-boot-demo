@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhoufa.mapper1.SINAAccountStatementMapper">
-  <resultMap id="BaseResultMap" type="com.zhoufa.entity1.SINAAccountStatement">
+<mapper namespace="com.zhoufa.autogeneration1.mapper.SINAAccountStatementMapper">
+  <resultMap id="BaseResultMap" type="com.zhoufa.autogeneration1.entity.SINAAccountStatement">
     <id column="FID" jdbcType="INTEGER" property="ID" />
     <result column="FSinaOrderNo" jdbcType="VARCHAR" property="sinaOrderNo" />
     <result column="FMerchantOrderNo" jdbcType="VARCHAR" property="merchantOrderNo" />
@@ -51,7 +51,7 @@
     delete from z_SINAAccountStatement
     where FID = #{ID,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zhoufa.entity1.SINAAccountStatement">
+  <insert id="insert" parameterType="com.zhoufa.autogeneration1.entity.SINAAccountStatement">
     insert into z_SINAAccountStatement (FID, FSinaOrderNo, FMerchantOrderNo, 
       FBusinessOriginalType, FBusinessType, FSubBusinessType, 
       FPayerName, FPayerAccount, FGoodsName, 
@@ -75,7 +75,7 @@
       #{accountStatementBatchNoId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{isDelete,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.zhoufa.entity1.SINAAccountStatement">
+  <insert id="insertSelective" parameterType="com.zhoufa.autogeneration1.entity.SINAAccountStatement">
     insert into z_SINAAccountStatement
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="ID != null">
@@ -262,7 +262,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zhoufa.entity1.SINAAccountStatement">
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhoufa.autogeneration1.entity.SINAAccountStatement">
     update z_SINAAccountStatement
     <set>
       <if test="sinaOrderNo != null">
@@ -355,7 +355,7 @@
     </set>
     where FID = #{ID,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zhoufa.entity1.SINAAccountStatement">
+  <update id="updateByPrimaryKey" parameterType="com.zhoufa.autogeneration1.entity.SINAAccountStatement">
     update z_SINAAccountStatement
     set FSinaOrderNo = #{sinaOrderNo,jdbcType=VARCHAR},
       FMerchantOrderNo = #{merchantOrderNo,jdbcType=VARCHAR},

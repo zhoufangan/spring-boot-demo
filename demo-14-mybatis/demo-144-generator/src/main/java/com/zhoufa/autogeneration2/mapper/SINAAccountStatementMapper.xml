@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zhoufa.mapper2.SINAAccountStatementMapper">
-  <resultMap id="BaseResultMap" type="com.zhoufa.entity2.SINAAccountStatement">
+<mapper namespace="com.zhoufa.autogeneration2.mapper.SINAAccountStatementMapper">
+  <resultMap id="BaseResultMap" type="com.zhoufa.autogeneration2.entity.SINAAccountStatement">
     <id column="FID" jdbcType="INTEGER" property="id" />
     <result column="FSinaOrderNo" jdbcType="VARCHAR" property="sinaOrderNo" />
     <result column="FMerchantOrderNo" jdbcType="VARCHAR" property="merchantOrderNo" />
@@ -37,7 +37,7 @@
     delete from z_SINAAccountStatement
     where FID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zhoufa.entity2.SINAAccountStatement">
+  <insert id="insert" parameterType="com.zhoufa.autogeneration2.entity.SINAAccountStatement">
     <selectKey keyProperty="id" order="BEFORE" resultType="Integer">
       SELECT SCOPE_IDENTITY()
     </selectKey>
@@ -64,7 +64,7 @@
       #{accountStatementBatchNoId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{isDelete,jdbcType=BIT})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.zhoufa.entity2.SINAAccountStatement">
+  <update id="updateByPrimaryKey" parameterType="com.zhoufa.autogeneration2.entity.SINAAccountStatement">
     update z_SINAAccountStatement
     set FSinaOrderNo = #{sinaOrderNo,jdbcType=VARCHAR},
       FMerchantOrderNo = #{merchantOrderNo,jdbcType=VARCHAR},

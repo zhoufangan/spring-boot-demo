@@ -1,4 +1,4 @@
-package com.zhoufa.entity1;
+package com.zhoufa.autogeneration1.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

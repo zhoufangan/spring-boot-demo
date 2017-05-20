@@ -1,6 +1,6 @@
-package com.zhoufa.mapper1;
+package com.zhoufa.autogeneration1.mapper;
 
-import com.zhoufa.entity1.SINAAccountStatement;
+import com.zhoufa.autogeneration1.entity.SINAAccountStatement;
 
 public interface SINAAccountStatementMapper {
     int deleteByPrimaryKey(Integer ID);

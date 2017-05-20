@@ -1,4 +1,4 @@
-package com.zhoufa.entity2;
+package com.zhoufa.autogeneration3.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
