@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 配置生成器 -->
+<generatorConfiguration>
+    <!--
+        数据库驱动:
+        因为是maven插件自动生成,驱动在pom文件中引入,这里引入会用到绝对路径,很麻烦
+        <classPathEntry location="sqljdbc4-4.4.jar"/>
+    -->
+
+    <context id="SqlServer" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple">
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                connectionURL="jdbc:sqlserver://192.168.100.91;DatabaseName=BT_Wallet;sendStringParametersAsUnicode=false"
+                userId="Bw_dev"
+                password="btjf321!">
+        </jdbcConnection>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.zhoufa.autogeneration4.entity" targetProject="./src/main/java/">
+            <property name="constructorBased" value="false"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="immutable" value="false"/>
+            <property name="trimStrings" value="false"/>
+            <property name="rootInterface" value="java.io.Serializable"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.zhoufa.autogeneration4.mapper" targetProject="./src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--
+            对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
+            targetPackage/targetProject:同javaModelGenerator
+            type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
+                1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+                2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+                3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+            注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
+        -->
+        <javaClientGenerator targetPackage="com.zhoufa.autogeneration4.mapper" type="ANNOTATEDMAPPER"
+                             targetProject="./src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="z_SINAAccountStatement" domainObjectName="SINAAccountStatement">
+            <property name="constructorBased" value="false"/>
+            <property name="ignoreQualifiersAtRuntime" value="false"/>
+            <property name="immutable" value="false"/>
+            <property name="modelOnly" value="false"/>
+            <property name="rootInterface" value="java.io.Serializable"/>
+            <property name="selectAllOrderByClause" value="age desc,username asc"/>
+            <property name="useActualColumnNames" value="true"/>
+
+            <generatedKey column="FID" sqlStatement="SqlServer"/>
+            <columnRenamingRule searchString="^F" replaceString=""/>
+            <columnOverride column="FID" property="id" javaType="Integer" jdbcType="INTEGER"/>
+        </table>
+    </context>
+</generatorConfiguration>
