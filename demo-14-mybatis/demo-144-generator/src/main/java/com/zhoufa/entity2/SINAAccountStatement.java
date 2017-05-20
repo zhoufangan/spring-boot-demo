@@ -1,10 +1,11 @@
-package com.zhoufa.entity;
+package com.zhoufa.entity2;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class SINAAccountStatement {
-    private Integer ID;
+public class SINAAccountStatement implements Serializable {
+    private Integer id;
 
     private String sinaOrderNo;
 
@@ -64,12 +65,14 @@ public class SINAAccountStatement {
 
     private Boolean isDelete;
 
-    public Integer getID() {
-        return ID;
+    private static final long serialVersionUID = 1L;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getSinaOrderNo() {
@@ -77,7 +80,7 @@ public class SINAAccountStatement {
     }
 
     public void setSinaOrderNo(String sinaOrderNo) {
-        this.sinaOrderNo = sinaOrderNo == null ? null : sinaOrderNo.trim();
+        this.sinaOrderNo = sinaOrderNo;
     }
 
     public String getMerchantOrderNo() {
@@ -85,7 +88,7 @@ public class SINAAccountStatement {
     }
 
     public void setMerchantOrderNo(String merchantOrderNo) {
-        this.merchantOrderNo = merchantOrderNo == null ? null : merchantOrderNo.trim();
+        this.merchantOrderNo = merchantOrderNo;
     }
 
     public String getBusinessOriginalType() {
@@ -93,7 +96,7 @@ public class SINAAccountStatement {
     }
 
     public void setBusinessOriginalType(String businessOriginalType) {
-        this.businessOriginalType = businessOriginalType == null ? null : businessOriginalType.trim();
+        this.businessOriginalType = businessOriginalType;
     }
 
     public Integer getBusinessType() {
@@ -109,7 +112,7 @@ public class SINAAccountStatement {
     }
 
     public void setSubBusinessType(String subBusinessType) {
-        this.subBusinessType = subBusinessType == null ? null : subBusinessType.trim();
+        this.subBusinessType = subBusinessType;
     }
 
     public String getPayerName() {
@@ -117,7 +120,7 @@ public class SINAAccountStatement {
     }
 
     public void setPayerName(String payerName) {
-        this.payerName = payerName == null ? null : payerName.trim();
+        this.payerName = payerName;
     }
 
     public String getPayerAccount() {
@@ -125,7 +128,7 @@ public class SINAAccountStatement {
     }
 
     public void setPayerAccount(String payerAccount) {
-        this.payerAccount = payerAccount == null ? null : payerAccount.trim();
+        this.payerAccount = payerAccount;
     }
 
     public String getGoodsName() {
@@ -133,7 +136,7 @@ public class SINAAccountStatement {
     }
 
     public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName == null ? null : goodsName.trim();
+        this.goodsName = goodsName;
     }
 
     public BigDecimal getOrderAmount() {
@@ -165,7 +168,7 @@ public class SINAAccountStatement {
     }
 
     public void setPayeeName(String payeeName) {
-        this.payeeName = payeeName == null ? null : payeeName.trim();
+        this.payeeName = payeeName;
     }
 
     public String getPayeeAccount() {
@@ -173,7 +176,7 @@ public class SINAAccountStatement {
     }
 
     public void setPayeeAccount(String payeeAccount) {
-        this.payeeAccount = payeeAccount == null ? null : payeeAccount.trim();
+        this.payeeAccount = payeeAccount;
     }
 
     public String getOrderOriginalStatus() {
@@ -181,7 +184,7 @@ public class SINAAccountStatement {
     }
 
     public void setOrderOriginalStatus(String orderOriginalStatus) {
-        this.orderOriginalStatus = orderOriginalStatus == null ? null : orderOriginalStatus.trim();
+        this.orderOriginalStatus = orderOriginalStatus;
     }
 
     public Integer getOrderStatus() {
@@ -213,7 +216,7 @@ public class SINAAccountStatement {
     }
 
     public void setPaymentChannel(String paymentChannel) {
-        this.paymentChannel = paymentChannel == null ? null : paymentChannel.trim();
+        this.paymentChannel = paymentChannel;
     }
 
     public String getPaymentTerminal() {
@@ -221,7 +224,7 @@ public class SINAAccountStatement {
     }
 
     public void setPaymentTerminal(String paymentTerminal) {
-        this.paymentTerminal = paymentTerminal == null ? null : paymentTerminal.trim();
+        this.paymentTerminal = paymentTerminal;
     }
 
     public String getRemark() {
@@ -229,7 +232,7 @@ public class SINAAccountStatement {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 
     public String getMerchantNo() {
@@ -237,7 +240,7 @@ public class SINAAccountStatement {
     }
 
     public void setMerchantNo(String merchantNo) {
-        this.merchantNo = merchantNo == null ? null : merchantNo.trim();
+        this.merchantNo = merchantNo;
     }
 
     public BigDecimal getPlatformFee() {
@@ -253,7 +256,7 @@ public class SINAAccountStatement {
     }
 
     public void setPayerUid(String payerUid) {
-        this.payerUid = payerUid == null ? null : payerUid.trim();
+        this.payerUid = payerUid;
     }
 
     public String getPayeeUid() {
@@ -261,7 +264,7 @@ public class SINAAccountStatement {
     }
 
     public void setPayeeUid(String payeeUid) {
-        this.payeeUid = payeeUid == null ? null : payeeUid.trim();
+        this.payeeUid = payeeUid;
     }
 
     public String getMerchantBatchNo() {
@@ -269,7 +272,7 @@ public class SINAAccountStatement {
     }
 
     public void setMerchantBatchNo(String merchantBatchNo) {
-        this.merchantBatchNo = merchantBatchNo == null ? null : merchantBatchNo.trim();
+        this.merchantBatchNo = merchantBatchNo;
     }
 
     public String getTransactionBatchNo() {
@@ -277,7 +280,7 @@ public class SINAAccountStatement {
     }
 
     public void setTransactionBatchNo(String transactionBatchNo) {
-        this.transactionBatchNo = transactionBatchNo == null ? null : transactionBatchNo.trim();
+        this.transactionBatchNo = transactionBatchNo;
     }
 
     public Integer getAccountStatementBatchNoId() {
