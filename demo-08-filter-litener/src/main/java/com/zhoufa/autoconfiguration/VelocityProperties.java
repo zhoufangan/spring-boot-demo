@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * @author zhoufangan Created by zhoufangan on 17/3/6.
  */
 @Component
-@ConfigurationProperties(prefix = "custom.web.mvc.velocity")
+@ConfigurationProperties(prefix = "pager.web.mvc.velocity")
 public class VelocityProperties implements IVelocityProperties {
 
     // VelocityConfigurer 配置属性

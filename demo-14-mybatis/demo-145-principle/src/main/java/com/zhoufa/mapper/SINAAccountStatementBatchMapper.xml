@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhoufa.mapper.SINAAccountStatementBatchMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.zhoufa.entity.SINAAccountStatementBatch">
+        insert into z_SINAAccountStatementBatch
+        (
+         FBatchNo, FStatisticalTime, FStatus, FCreateTime, FCreateUserId
+        )
+        values
+        (
+          (
+            case
+                when (select MAX(FBatchNo) from z_SINAAccountStatementBatch where FStatisticalTime=#{statisticalTime,jdbcType=VARCHAR}) is null then 1
+                else (select MAX(FBatchNo) from z_SINAAccountStatementBatch where FStatisticalTime=#{statisticalTime,jdbcType=VARCHAR}) + 1
+            end
+          ),
+            #{statisticalTime,jdbcType=VARCHAR},
+            0,
+            getdate(),
+            -1
+        )
+        SELECT @@IDENTITY AS id
+    </insert>
+
+    <update id="modifyToSuccess" parameterType="int">
+        update z_SINAAccountStatementBatch set FStatus=10 where FID=#{FID}
+    </update>
+
+    <update id="delAccountStatementBatchExceptCurrent" parameterType="Map">
+        update z_SINAAccountStatementBatch
+          set FIsDelete=1
+        where
+          FStatisticalTime=#{statisticalTime}
+          and FID != #{batchId}
+    </update>
+
+    <select id="queryByStatisticsDayRecently" parameterType="String" resultType="int">
+        SELECT
+          TOP 1 FID
+        FROM
+          z_SINAAccountStatementBatch
+        WHERE
+          FStatisticalTime = #{FStatisticalTime}
+        AND
+          FIsDelete = 0
+        AND
+          FStatus = 10
+        ORDER BY FID DESC
+    </select>
+</mapper>

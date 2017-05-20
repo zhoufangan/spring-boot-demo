@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
         value = {"config-author.properties"},
         encoding = "GBK"
 )
-@ConfigurationProperties(prefix = "custom.author")
+@ConfigurationProperties(prefix = "pager.author")
 public class AuthorSetting implements IAuthorSetting {
 
-    // @Value("${custom.author.name}")
+    // @Value("${pager.author.name}")
     private String name;
-    // Value("${custom.author.age}")
+    // Value("${pager.author.age}")
     private int age;
 
     @Override

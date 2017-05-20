@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * @author zhoufangan Created by zhoufangan on 17/3/11.
  */
 @Component
-@ConfigurationProperties(prefix = "custom.mysql")
+@ConfigurationProperties(prefix = "pager.mysql")
 public class DynamicDataSourceProperties implements IDynamicDataSourceProperties {
 
     // master配置

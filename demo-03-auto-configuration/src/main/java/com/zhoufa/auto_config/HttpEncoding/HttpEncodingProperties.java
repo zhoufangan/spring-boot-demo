@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 /**
  * @author zhoufangan Created by zhoufangan on 17/3/4.
  */
-@ConfigurationProperties(prefix = "custom.http.encode")
+@ConfigurationProperties(prefix = "pager.http.encode")
 public class HttpEncodingProperties implements IHttpEncodingProperties {
 
     private Charset encoding = DEFAULT_CHARSET;

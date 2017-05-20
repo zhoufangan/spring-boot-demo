@@ -10,7 +10,7 @@ import java.util.List;
  * @author zhoufangan Created by zhoufangan on 17/3/5.
  */
 @Component
-@ConfigurationProperties(prefix = "custom.web.mvc")
+@ConfigurationProperties(prefix = "pager.web.mvc")
 public class CustomWebMvcProperties implements ICustomWebMvcProperties {
 
     private String mediaTypes = ViewMediaType.json.name();

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @author zhoufangan Created by zhoufangan on 17/3/9.
  */
 @Component
-@ConfigurationProperties(prefix = "custom.mongo")
+@ConfigurationProperties(prefix = "pager.mongo")
 public class MongoProperties implements IMongoProperties {
 
     private String hosts;

@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author zhoufangan Created by zhoufangan on 17/3/4.
  */
-@ConfigurationProperties(prefix = "custom.hello")
+@ConfigurationProperties(prefix = "pager.hello")
 public class HelloServiceProperties implements IHelloServiceProperties {
 
     private String message;
