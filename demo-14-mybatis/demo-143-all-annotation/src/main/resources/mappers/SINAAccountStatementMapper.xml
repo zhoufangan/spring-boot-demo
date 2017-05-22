@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhoufa.mapper.SINAAccountStatementMapper">
+    <resultMap id="BaseResultMap" type="com.zhoufa.entity.SINAAccountStatement">
+        <id column="FID" jdbcType="INTEGER" property="id"/>
+        <result column="FSinaOrderNo" jdbcType="VARCHAR" property="sinaOrderNo"/>
+        <result column="FMerchantOrderNo" jdbcType="VARCHAR" property="merchantOrderNo"/>
+        <result column="FBusinessOriginalType" jdbcType="VARCHAR" property="businessOriginalType"/>
+        <result column="FBusinessType" jdbcType="INTEGER" property="businessType"/>
+        <result column="FSubBusinessType" jdbcType="VARCHAR" property="subBusinessType"/>
+        <result column="FPayerName" jdbcType="VARCHAR" property="payerName"/>
+        <result column="FPayerAccount" jdbcType="VARCHAR" property="payerAccount"/>
+        <result column="FGoodsName" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="FOrderAmount" jdbcType="NUMERIC" property="orderAmount"/>
+        <result column="FCounterFee" jdbcType="NUMERIC" property="counterFee"/>
+        <result column="FRefundAmount" jdbcType="NUMERIC" property="refundAmount"/>
+        <result column="FPayeeName" jdbcType="VARCHAR" property="payeeName"/>
+        <result column="FPayeeAccount" jdbcType="VARCHAR" property="payeeAccount"/>
+        <result column="FOrderOriginalStatus" jdbcType="VARCHAR" property="orderOriginalStatus"/>
+        <result column="FOrderStatus" jdbcType="INTEGER" property="orderStatus"/>
+        <result column="FPaySuccessTime" jdbcType="TIMESTAMP" property="paySuccessTime"/>
+        <result column="FOrderCreateTime" jdbcType="TIMESTAMP" property="orderCreateTime"/>
+        <result column="FPaymentChannel" jdbcType="VARCHAR" property="paymentChannel"/>
+        <result column="FPaymentTerminal" jdbcType="VARCHAR" property="paymentTerminal"/>
+        <result column="FRemark" jdbcType="VARCHAR" property="remark"/>
+        <result column="FMerchantNo" jdbcType="VARCHAR" property="merchantNo"/>
+        <result column="FPlatformFee" jdbcType="NUMERIC" property="platformFee"/>
+        <result column="FPayerUid" jdbcType="VARCHAR" property="payerUid"/>
+        <result column="FPayeeUid" jdbcType="VARCHAR" property="payeeUid"/>
+        <result column="FMerchantBatchNo" jdbcType="VARCHAR" property="merchantBatchNo"/>
+        <result column="FTransactionBatchNo" jdbcType="VARCHAR" property="transactionBatchNo"/>
+        <result column="FAccountStatementBatchNoId" jdbcType="INTEGER" property="accountStatementBatchNoId"/>
+        <result column="FCreateTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="FIsDelete" jdbcType="BIT" property="isDelete"/>
+    </resultMap>
+</mapper>

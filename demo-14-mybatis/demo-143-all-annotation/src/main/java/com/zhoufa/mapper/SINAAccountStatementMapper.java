@@ -1,6 +1,8 @@
 package com.zhoufa.mapper;
 
 import com.zhoufa.entity.SINAAccountStatement;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -9,7 +11,13 @@ import java.util.List;
  */
 public interface SINAAccountStatementMapper {
 
+    @Select("select * from z_SINAAccountStatement where fid=#{id}")
+    @ResultMap("com.zhoufa.mapper.SINAAccountStatementMapper.BaseResultMap")
+    SINAAccountStatement selectByPrimary(int id);
+
     void insertBatch(List<SINAAccountStatement> data);
 
+    @Select("select * from z_SINAAccountStatement where FAccountStatementBatchNoId=#{batchId}")
+    @ResultMap("com.zhoufa.mapper.SINAAccountStatementMapper.BaseResultMap")
     List<SINAAccountStatement> queryByBatchId(Integer batchId);
 }

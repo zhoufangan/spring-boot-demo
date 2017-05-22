@@ -1,6 +1,8 @@
 package com.zhoufa.mapper;
 
 import com.zhoufa.entity.SINAAccountStatementBatch;
+import org.apache.ibatis.annotations.ResultType;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Map;
 
@@ -15,5 +17,9 @@ public interface SINAAccountStatementBatchMapper {
 
     void delAccountStatementBatchExceptCurrent(Map<String, Object> params);
 
+    @Select(
+            "select top 1 fid from z_sinaaccountstatementbatch where fstatisticaltime = #{fstatisticaltime} and fisdelete = 0 and fstatus = 10 order by fid desc"
+    )
+    @ResultType(Integer.class)
     Integer queryByStatisticsDayRecently(String statisticsDay);
 }

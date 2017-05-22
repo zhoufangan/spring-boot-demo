@@ -1,6 +1,8 @@
 package com.zhoufa.mapper;
 
 import com.zhoufa.entity.SINAAccountStatementBatch;
+import org.apache.ibatis.annotations.ResultType;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Map;
 
