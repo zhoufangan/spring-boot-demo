@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhoufa.autogeneration.mapper.SINAAccountStatementMapper">
+  <resultMap id="BaseResultMap" type="com.zhoufa.autogeneration.entity.SINAAccountStatement">
+    <id column="FID" jdbcType="INTEGER" property="id" />
+    <result column="FSinaOrderNo" jdbcType="VARCHAR" property="sinaOrderNo" />
+    <result column="FMerchantOrderNo" jdbcType="VARCHAR" property="merchantOrderNo" />
+    <result column="FBusinessOriginalType" jdbcType="VARCHAR" property="businessOriginalType" />
+    <result column="FBusinessType" jdbcType="INTEGER" property="businessType" />
+    <result column="FSubBusinessType" jdbcType="VARCHAR" property="subBusinessType" />
+    <result column="FPayerName" jdbcType="VARCHAR" property="payerName" />
+    <result column="FPayerAccount" jdbcType="VARCHAR" property="payerAccount" />
+    <result column="FGoodsName" jdbcType="VARCHAR" property="goodsName" />
+    <result column="FOrderAmount" jdbcType="NUMERIC" property="orderAmount" />
+    <result column="FCounterFee" jdbcType="NUMERIC" property="counterFee" />
+    <result column="FRefundAmount" jdbcType="NUMERIC" property="refundAmount" />
+    <result column="FPayeeName" jdbcType="VARCHAR" property="payeeName" />
+    <result column="FPayeeAccount" jdbcType="VARCHAR" property="payeeAccount" />
+    <result column="FOrderOriginalStatus" jdbcType="VARCHAR" property="orderOriginalStatus" />
+    <result column="FOrderStatus" jdbcType="INTEGER" property="orderStatus" />
+    <result column="FPaySuccessTime" jdbcType="TIMESTAMP" property="paySuccessTime" />
+    <result column="FOrderCreateTime" jdbcType="TIMESTAMP" property="orderCreateTime" />
+    <result column="FPaymentChannel" jdbcType="VARCHAR" property="paymentChannel" />
+    <result column="FPaymentTerminal" jdbcType="VARCHAR" property="paymentTerminal" />
+    <result column="FRemark" jdbcType="VARCHAR" property="remark" />
+    <result column="FMerchantNo" jdbcType="VARCHAR" property="merchantNo" />
+    <result column="FPlatformFee" jdbcType="NUMERIC" property="platformFee" />
+    <result column="FPayerUid" jdbcType="VARCHAR" property="payerUid" />
+    <result column="FPayeeUid" jdbcType="VARCHAR" property="payeeUid" />
+    <result column="FMerchantBatchNo" jdbcType="VARCHAR" property="merchantBatchNo" />
+    <result column="FTransactionBatchNo" jdbcType="VARCHAR" property="transactionBatchNo" />
+    <result column="FAccountStatementBatchNoId" jdbcType="INTEGER" property="accountStatementBatchNoId" />
+    <result column="FCreateTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="FIsDelete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FID, FSinaOrderNo, FMerchantOrderNo, FBusinessOriginalType, FBusinessType, FSubBusinessType, 
+    FPayerName, FPayerAccount, FGoodsName, FOrderAmount, FCounterFee, FRefundAmount, 
+    FPayeeName, FPayeeAccount, FOrderOriginalStatus, FOrderStatus, FPaySuccessTime, FOrderCreateTime, 
+    FPaymentChannel, FPaymentTerminal, FRemark, FMerchantNo, FPlatformFee, FPayerUid, 
+    FPayeeUid, FMerchantBatchNo, FTransactionBatchNo, FAccountStatementBatchNoId, FCreateTime, 
+    FIsDelete
+  </sql>
+  <select id="selectByExample" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from z_SINAAccountStatement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from z_SINAAccountStatement
+    where FID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer">
+    delete from z_SINAAccountStatement
+    where FID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementExample">
+    delete from z_SINAAccountStatement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatement">
+    <selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+      SELECT SCOPE_IDENTITY()
+    </selectKey>
+    insert into z_SINAAccountStatement (FID, FSinaOrderNo, FMerchantOrderNo, 
+      FBusinessOriginalType, FBusinessType, FSubBusinessType, 
+      FPayerName, FPayerAccount, FGoodsName, 
+      FOrderAmount, FCounterFee, FRefundAmount, 
+      FPayeeName, FPayeeAccount, FOrderOriginalStatus, 
+      FOrderStatus, FPaySuccessTime, FOrderCreateTime, 
+      FPaymentChannel, FPaymentTerminal, FRemark, 
+      FMerchantNo, FPlatformFee, FPayerUid, 
+      FPayeeUid, FMerchantBatchNo, FTransactionBatchNo, 
+      FAccountStatementBatchNoId, FCreateTime, 
+      FIsDelete)
+    values (#{id,jdbcType=INTEGER}, #{sinaOrderNo,jdbcType=VARCHAR}, #{merchantOrderNo,jdbcType=VARCHAR}, 
+      #{businessOriginalType,jdbcType=VARCHAR}, #{businessType,jdbcType=INTEGER}, #{subBusinessType,jdbcType=VARCHAR}, 
+      #{payerName,jdbcType=VARCHAR}, #{payerAccount,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{orderAmount,jdbcType=NUMERIC}, #{counterFee,jdbcType=NUMERIC}, #{refundAmount,jdbcType=NUMERIC}, 
+      #{payeeName,jdbcType=VARCHAR}, #{payeeAccount,jdbcType=VARCHAR}, #{orderOriginalStatus,jdbcType=VARCHAR}, 
+      #{orderStatus,jdbcType=INTEGER}, #{paySuccessTime,jdbcType=TIMESTAMP}, #{orderCreateTime,jdbcType=TIMESTAMP}, 
+      #{paymentChannel,jdbcType=VARCHAR}, #{paymentTerminal,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{merchantNo,jdbcType=VARCHAR}, #{platformFee,jdbcType=NUMERIC}, #{payerUid,jdbcType=VARCHAR}, 
+      #{payeeUid,jdbcType=VARCHAR}, #{merchantBatchNo,jdbcType=VARCHAR}, #{transactionBatchNo,jdbcType=VARCHAR}, 
+      #{accountStatementBatchNoId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatement">
+    <selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+      SELECT SCOPE_IDENTITY()
+    </selectKey>
+    insert into z_SINAAccountStatement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      FID,
+      <if test="sinaOrderNo != null">
+        FSinaOrderNo,
+      </if>
+      <if test="merchantOrderNo != null">
+        FMerchantOrderNo,
+      </if>
+      <if test="businessOriginalType != null">
+        FBusinessOriginalType,
+      </if>
+      <if test="businessType != null">
+        FBusinessType,
+      </if>
+      <if test="subBusinessType != null">
+        FSubBusinessType,
+      </if>
+      <if test="payerName != null">
+        FPayerName,
+      </if>
+      <if test="payerAccount != null">
+        FPayerAccount,
+      </if>
+      <if test="goodsName != null">
+        FGoodsName,
+      </if>
+      <if test="orderAmount != null">
+        FOrderAmount,
+      </if>
+      <if test="counterFee != null">
+        FCounterFee,
+      </if>
+      <if test="refundAmount != null">
+        FRefundAmount,
+      </if>
+      <if test="payeeName != null">
+        FPayeeName,
+      </if>
+      <if test="payeeAccount != null">
+        FPayeeAccount,
+      </if>
+      <if test="orderOriginalStatus != null">
+        FOrderOriginalStatus,
+      </if>
+      <if test="orderStatus != null">
+        FOrderStatus,
+      </if>
+      <if test="paySuccessTime != null">
+        FPaySuccessTime,
+      </if>
+      <if test="orderCreateTime != null">
+        FOrderCreateTime,
+      </if>
+      <if test="paymentChannel != null">
+        FPaymentChannel,
+      </if>
+      <if test="paymentTerminal != null">
+        FPaymentTerminal,
+      </if>
+      <if test="remark != null">
+        FRemark,
+      </if>
+      <if test="merchantNo != null">
+        FMerchantNo,
+      </if>
+      <if test="platformFee != null">
+        FPlatformFee,
+      </if>
+      <if test="payerUid != null">
+        FPayerUid,
+      </if>
+      <if test="payeeUid != null">
+        FPayeeUid,
+      </if>
+      <if test="merchantBatchNo != null">
+        FMerchantBatchNo,
+      </if>
+      <if test="transactionBatchNo != null">
+        FTransactionBatchNo,
+      </if>
+      <if test="accountStatementBatchNoId != null">
+        FAccountStatementBatchNoId,
+      </if>
+      <if test="createTime != null">
+        FCreateTime,
+      </if>
+      <if test="isDelete != null">
+        FIsDelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=INTEGER},
+      <if test="sinaOrderNo != null">
+        #{sinaOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantOrderNo != null">
+        #{merchantOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessOriginalType != null">
+        #{businessOriginalType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="subBusinessType != null">
+        #{subBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="payerName != null">
+        #{payerName,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccount != null">
+        #{payerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="counterFee != null">
+        #{counterFee,jdbcType=NUMERIC},
+      </if>
+      <if test="refundAmount != null">
+        #{refundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="payeeName != null">
+        #{payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAccount != null">
+        #{payeeAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOriginalStatus != null">
+        #{orderOriginalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="paySuccessTime != null">
+        #{paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCreateTime != null">
+        #{orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentChannel != null">
+        #{paymentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTerminal != null">
+        #{paymentTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null">
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platformFee != null">
+        #{platformFee,jdbcType=NUMERIC},
+      </if>
+      <if test="payerUid != null">
+        #{payerUid,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeUid != null">
+        #{payeeUid,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantBatchNo != null">
+        #{merchantBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionBatchNo != null">
+        #{transactionBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountStatementBatchNoId != null">
+        #{accountStatementBatchNoId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementExample" resultType="java.lang.Long">
+    select count(*) from z_SINAAccountStatement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update z_SINAAccountStatement
+    <set>
+      <if test="record.id != null">
+        FID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.sinaOrderNo != null">
+        FSinaOrderNo = #{record.sinaOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantOrderNo != null">
+        FMerchantOrderNo = #{record.merchantOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessOriginalType != null">
+        FBusinessOriginalType = #{record.businessOriginalType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessType != null">
+        FBusinessType = #{record.businessType,jdbcType=INTEGER},
+      </if>
+      <if test="record.subBusinessType != null">
+        FSubBusinessType = #{record.subBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payerName != null">
+        FPayerName = #{record.payerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payerAccount != null">
+        FPayerAccount = #{record.payerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsName != null">
+        FGoodsName = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderAmount != null">
+        FOrderAmount = #{record.orderAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="record.counterFee != null">
+        FCounterFee = #{record.counterFee,jdbcType=NUMERIC},
+      </if>
+      <if test="record.refundAmount != null">
+        FRefundAmount = #{record.refundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="record.payeeName != null">
+        FPayeeName = #{record.payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payeeAccount != null">
+        FPayeeAccount = #{record.payeeAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderOriginalStatus != null">
+        FOrderOriginalStatus = #{record.orderOriginalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderStatus != null">
+        FOrderStatus = #{record.orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.paySuccessTime != null">
+        FPaySuccessTime = #{record.paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderCreateTime != null">
+        FOrderCreateTime = #{record.orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.paymentChannel != null">
+        FPaymentChannel = #{record.paymentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentTerminal != null">
+        FPaymentTerminal = #{record.paymentTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        FRemark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantNo != null">
+        FMerchantNo = #{record.merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platformFee != null">
+        FPlatformFee = #{record.platformFee,jdbcType=NUMERIC},
+      </if>
+      <if test="record.payerUid != null">
+        FPayerUid = #{record.payerUid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payeeUid != null">
+        FPayeeUid = #{record.payeeUid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantBatchNo != null">
+        FMerchantBatchNo = #{record.merchantBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transactionBatchNo != null">
+        FTransactionBatchNo = #{record.transactionBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountStatementBatchNoId != null">
+        FAccountStatementBatchNoId = #{record.accountStatementBatchNoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        FCreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null">
+        FIsDelete = #{record.isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update z_SINAAccountStatement
+    set FID = #{record.id,jdbcType=INTEGER},
+      FSinaOrderNo = #{record.sinaOrderNo,jdbcType=VARCHAR},
+      FMerchantOrderNo = #{record.merchantOrderNo,jdbcType=VARCHAR},
+      FBusinessOriginalType = #{record.businessOriginalType,jdbcType=VARCHAR},
+      FBusinessType = #{record.businessType,jdbcType=INTEGER},
+      FSubBusinessType = #{record.subBusinessType,jdbcType=VARCHAR},
+      FPayerName = #{record.payerName,jdbcType=VARCHAR},
+      FPayerAccount = #{record.payerAccount,jdbcType=VARCHAR},
+      FGoodsName = #{record.goodsName,jdbcType=VARCHAR},
+      FOrderAmount = #{record.orderAmount,jdbcType=NUMERIC},
+      FCounterFee = #{record.counterFee,jdbcType=NUMERIC},
+      FRefundAmount = #{record.refundAmount,jdbcType=NUMERIC},
+      FPayeeName = #{record.payeeName,jdbcType=VARCHAR},
+      FPayeeAccount = #{record.payeeAccount,jdbcType=VARCHAR},
+      FOrderOriginalStatus = #{record.orderOriginalStatus,jdbcType=VARCHAR},
+      FOrderStatus = #{record.orderStatus,jdbcType=INTEGER},
+      FPaySuccessTime = #{record.paySuccessTime,jdbcType=TIMESTAMP},
+      FOrderCreateTime = #{record.orderCreateTime,jdbcType=TIMESTAMP},
+      FPaymentChannel = #{record.paymentChannel,jdbcType=VARCHAR},
+      FPaymentTerminal = #{record.paymentTerminal,jdbcType=VARCHAR},
+      FRemark = #{record.remark,jdbcType=VARCHAR},
+      FMerchantNo = #{record.merchantNo,jdbcType=VARCHAR},
+      FPlatformFee = #{record.platformFee,jdbcType=NUMERIC},
+      FPayerUid = #{record.payerUid,jdbcType=VARCHAR},
+      FPayeeUid = #{record.payeeUid,jdbcType=VARCHAR},
+      FMerchantBatchNo = #{record.merchantBatchNo,jdbcType=VARCHAR},
+      FTransactionBatchNo = #{record.transactionBatchNo,jdbcType=VARCHAR},
+      FAccountStatementBatchNoId = #{record.accountStatementBatchNoId,jdbcType=INTEGER},
+      FCreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      FIsDelete = #{record.isDelete,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatement">
+    update z_SINAAccountStatement
+    <set>
+      <if test="sinaOrderNo != null">
+        FSinaOrderNo = #{sinaOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantOrderNo != null">
+        FMerchantOrderNo = #{merchantOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businessOriginalType != null">
+        FBusinessOriginalType = #{businessOriginalType,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null">
+        FBusinessType = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="subBusinessType != null">
+        FSubBusinessType = #{subBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="payerName != null">
+        FPayerName = #{payerName,jdbcType=VARCHAR},
+      </if>
+      <if test="payerAccount != null">
+        FPayerAccount = #{payerAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null">
+        FGoodsName = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAmount != null">
+        FOrderAmount = #{orderAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="counterFee != null">
+        FCounterFee = #{counterFee,jdbcType=NUMERIC},
+      </if>
+      <if test="refundAmount != null">
+        FRefundAmount = #{refundAmount,jdbcType=NUMERIC},
+      </if>
+      <if test="payeeName != null">
+        FPayeeName = #{payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAccount != null">
+        FPayeeAccount = #{payeeAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOriginalStatus != null">
+        FOrderOriginalStatus = #{orderOriginalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        FOrderStatus = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="paySuccessTime != null">
+        FPaySuccessTime = #{paySuccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderCreateTime != null">
+        FOrderCreateTime = #{orderCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentChannel != null">
+        FPaymentChannel = #{paymentChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentTerminal != null">
+        FPaymentTerminal = #{paymentTerminal,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        FRemark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null">
+        FMerchantNo = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="platformFee != null">
+        FPlatformFee = #{platformFee,jdbcType=NUMERIC},
+      </if>
+      <if test="payerUid != null">
+        FPayerUid = #{payerUid,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeUid != null">
+        FPayeeUid = #{payeeUid,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantBatchNo != null">
+        FMerchantBatchNo = #{merchantBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionBatchNo != null">
+        FTransactionBatchNo = #{transactionBatchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountStatementBatchNoId != null">
+        FAccountStatementBatchNoId = #{accountStatementBatchNoId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        FCreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        FIsDelete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    where FID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatement">
+    update z_SINAAccountStatement
+    set FSinaOrderNo = #{sinaOrderNo,jdbcType=VARCHAR},
+      FMerchantOrderNo = #{merchantOrderNo,jdbcType=VARCHAR},
+      FBusinessOriginalType = #{businessOriginalType,jdbcType=VARCHAR},
+      FBusinessType = #{businessType,jdbcType=INTEGER},
+      FSubBusinessType = #{subBusinessType,jdbcType=VARCHAR},
+      FPayerName = #{payerName,jdbcType=VARCHAR},
+      FPayerAccount = #{payerAccount,jdbcType=VARCHAR},
+      FGoodsName = #{goodsName,jdbcType=VARCHAR},
+      FOrderAmount = #{orderAmount,jdbcType=NUMERIC},
+      FCounterFee = #{counterFee,jdbcType=NUMERIC},
+      FRefundAmount = #{refundAmount,jdbcType=NUMERIC},
+      FPayeeName = #{payeeName,jdbcType=VARCHAR},
+      FPayeeAccount = #{payeeAccount,jdbcType=VARCHAR},
+      FOrderOriginalStatus = #{orderOriginalStatus,jdbcType=VARCHAR},
+      FOrderStatus = #{orderStatus,jdbcType=INTEGER},
+      FPaySuccessTime = #{paySuccessTime,jdbcType=TIMESTAMP},
+      FOrderCreateTime = #{orderCreateTime,jdbcType=TIMESTAMP},
+      FPaymentChannel = #{paymentChannel,jdbcType=VARCHAR},
+      FPaymentTerminal = #{paymentTerminal,jdbcType=VARCHAR},
+      FRemark = #{remark,jdbcType=VARCHAR},
+      FMerchantNo = #{merchantNo,jdbcType=VARCHAR},
+      FPlatformFee = #{platformFee,jdbcType=NUMERIC},
+      FPayerUid = #{payerUid,jdbcType=VARCHAR},
+      FPayeeUid = #{payeeUid,jdbcType=VARCHAR},
+      FMerchantBatchNo = #{merchantBatchNo,jdbcType=VARCHAR},
+      FTransactionBatchNo = #{transactionBatchNo,jdbcType=VARCHAR},
+      FAccountStatementBatchNoId = #{accountStatementBatchNoId,jdbcType=INTEGER},
+      FCreateTime = #{createTime,jdbcType=TIMESTAMP},
+      FIsDelete = #{isDelete,jdbcType=BIT}
+    where FID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

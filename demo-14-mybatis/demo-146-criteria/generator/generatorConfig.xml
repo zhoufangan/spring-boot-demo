@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="SqlServer" defaultModelType="flat" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                connectionURL="jdbc:sqlserver://192.168.100.91;DatabaseName=BT_Wallet;sendStringParametersAsUnicode=false"
+                userId="Bw_dev"
+                password="btjf321!">
+        </jdbcConnection>
+
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.zhoufa.autogeneration.entity" targetProject="src/main/java/">
+            <property name="constructorBased" value="false"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="immutable" value="false"/>
+            <property name="trimStrings" value="false"/>
+            <property name="rootInterface" value="java.io.Serializable"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.zhoufa.autogeneration.mapper" targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.zhoufa.autogeneration.mapper" type="XMLMAPPER"
+                             targetProject="src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="z_SINAAccountStatement" domainObjectName="SINAAccountStatement">
+            <!-- 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter； -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否创建一个不可变的类，如果为true，那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类 -->
+            <property name="immutable" value="false"/>
+            <!-- 指定是否只生成domain类，如果设置为true，只生成domain类，如果还配置了sqlMapGenerator，那么在mapper XML文件中，只生成resultMap元素 -->
+            <property name="modelOnly" value="false"/>
+            <!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查 -->
+            <property name="rootInterface" value="java.io.Serializable"/>
+            <!-- 如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件； -->
+            <property name="selectAllOrderByClause" value="FID desc"/>
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="FID" sqlStatement="SqlServer"/>
+            <columnRenamingRule searchString="^F" replaceString=""/>
+            <columnOverride column="FID" property="id" javaType="Integer" jdbcType="INTEGER"/>
+        </table>
+
+        <table tableName="z_SINAAccountStatementBatch" domainObjectName="SINAAccountStatementBatch">
+            <!-- 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter； -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否创建一个不可变的类，如果为true，那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类 -->
+            <property name="immutable" value="false"/>
+            <!-- 指定是否只生成domain类，如果设置为true，只生成domain类，如果还配置了sqlMapGenerator，那么在mapper XML文件中，只生成resultMap元素 -->
+            <property name="modelOnly" value="false"/>
+            <!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查 -->
+            <property name="rootInterface" value="java.io.Serializable"/>
+            <!-- 如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件； -->
+            <property name="selectAllOrderByClause" value="FID desc"/>
+            <property name="useActualColumnNames" value="true"/>
+            <generatedKey column="FID" sqlStatement="SqlServer"/>
+            <columnRenamingRule searchString="^F" replaceString=""/>
+            <columnOverride column="FID" property="id" javaType="Integer" jdbcType="INTEGER"/>
+        </table>
+    </context>
+</generatorConfiguration>

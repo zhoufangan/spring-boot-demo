@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhoufa.autogeneration.mapper.SINAAccountStatementBatchMapper">
+  <resultMap id="BaseResultMap" type="com.zhoufa.autogeneration.entity.SINAAccountStatementBatch">
+    <id column="FID" jdbcType="INTEGER" property="id" />
+    <result column="FBatchNo" jdbcType="INTEGER" property="batchNo" />
+    <result column="FStatisticalTime" jdbcType="VARCHAR" property="statisticalTime" />
+    <result column="FStatus" jdbcType="INTEGER" property="status" />
+    <result column="FIsDelete" jdbcType="INTEGER" property="isDelete" />
+    <result column="FCreateTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="FCreateUserId" jdbcType="INTEGER" property="createUserId" />
+    <result column="FLastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="FLastModifyUserId" jdbcType="INTEGER" property="lastModifyUserId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    FID, FBatchNo, FStatisticalTime, FStatus, FIsDelete, FCreateTime, FCreateUserId, 
+    FLastModifyTime, FLastModifyUserId
+  </sql>
+  <select id="selectByExample" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatchExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from z_SINAAccountStatementBatch
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from z_SINAAccountStatementBatch
+    where FID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer">
+    delete from z_SINAAccountStatementBatch
+    where FID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatchExample">
+    delete from z_SINAAccountStatementBatch
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatch">
+    <selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+      SELECT SCOPE_IDENTITY()
+    </selectKey>
+    insert into z_SINAAccountStatementBatch (FID, FBatchNo, FStatisticalTime, 
+      FStatus, FIsDelete, FCreateTime, 
+      FCreateUserId, FLastModifyTime, FLastModifyUserId
+      )
+    values (#{id,jdbcType=INTEGER}, #{batchNo,jdbcType=INTEGER}, #{statisticalTime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUserId,jdbcType=INTEGER}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{lastModifyUserId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatch">
+    <selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+      SELECT SCOPE_IDENTITY()
+    </selectKey>
+    insert into z_SINAAccountStatementBatch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      FID,
+      <if test="batchNo != null">
+        FBatchNo,
+      </if>
+      <if test="statisticalTime != null">
+        FStatisticalTime,
+      </if>
+      <if test="status != null">
+        FStatus,
+      </if>
+      <if test="isDelete != null">
+        FIsDelete,
+      </if>
+      <if test="createTime != null">
+        FCreateTime,
+      </if>
+      <if test="createUserId != null">
+        FCreateUserId,
+      </if>
+      <if test="lastModifyTime != null">
+        FLastModifyTime,
+      </if>
+      <if test="lastModifyUserId != null">
+        FLastModifyUserId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=INTEGER},
+      <if test="batchNo != null">
+        #{batchNo,jdbcType=INTEGER},
+      </if>
+      <if test="statisticalTime != null">
+        #{statisticalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyUserId != null">
+        #{lastModifyUserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatchExample" resultType="java.lang.Long">
+    select count(*) from z_SINAAccountStatementBatch
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update z_SINAAccountStatementBatch
+    <set>
+      <if test="record.id != null">
+        FID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.batchNo != null">
+        FBatchNo = #{record.batchNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.statisticalTime != null">
+        FStatisticalTime = #{record.statisticalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        FStatus = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDelete != null">
+        FIsDelete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        FCreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUserId != null">
+        FCreateUserId = #{record.createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastModifyTime != null">
+        FLastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifyUserId != null">
+        FLastModifyUserId = #{record.lastModifyUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update z_SINAAccountStatementBatch
+    set FID = #{record.id,jdbcType=INTEGER},
+      FBatchNo = #{record.batchNo,jdbcType=INTEGER},
+      FStatisticalTime = #{record.statisticalTime,jdbcType=VARCHAR},
+      FStatus = #{record.status,jdbcType=INTEGER},
+      FIsDelete = #{record.isDelete,jdbcType=INTEGER},
+      FCreateTime = #{record.createTime,jdbcType=TIMESTAMP},
+      FCreateUserId = #{record.createUserId,jdbcType=INTEGER},
+      FLastModifyTime = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      FLastModifyUserId = #{record.lastModifyUserId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatch">
+    update z_SINAAccountStatementBatch
+    <set>
+      <if test="batchNo != null">
+        FBatchNo = #{batchNo,jdbcType=INTEGER},
+      </if>
+      <if test="statisticalTime != null">
+        FStatisticalTime = #{statisticalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        FStatus = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        FIsDelete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        FCreateTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null">
+        FCreateUserId = #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="lastModifyTime != null">
+        FLastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyUserId != null">
+        FLastModifyUserId = #{lastModifyUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where FID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhoufa.autogeneration.entity.SINAAccountStatementBatch">
+    update z_SINAAccountStatementBatch
+    set FBatchNo = #{batchNo,jdbcType=INTEGER},
+      FStatisticalTime = #{statisticalTime,jdbcType=VARCHAR},
+      FStatus = #{status,jdbcType=INTEGER},
+      FIsDelete = #{isDelete,jdbcType=INTEGER},
+      FCreateTime = #{createTime,jdbcType=TIMESTAMP},
+      FCreateUserId = #{createUserId,jdbcType=INTEGER},
+      FLastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP},
+      FLastModifyUserId = #{lastModifyUserId,jdbcType=INTEGER}
+    where FID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
