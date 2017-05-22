@@ -63,15 +63,6 @@ public class DataSourceConfiguration {
     @Bean
     @Order(-1)
     public DataSource dataSource() throws Exception {
-        /*
-        Properties props = new Properties();
-        props.put("driverClassName", environment.getProperty("jdbc.driverClassName"));
-        props.put("url", environment.getProperty("jdbc.url"));
-        props.put("username", environment.getProperty("jdbc.username"));
-        props.put("password", environment.getProperty("jdbc.password"));
-        return DruidDataSourceFactory.createDataSource(props);
-        */
-
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(name);
         dataSource.setUrl(url);
@@ -92,5 +83,15 @@ public class DataSourceConfiguration {
         dataSource.setPoolPreparedStatements(poolPreparedStatements);
         dataSource.setMaxOpenPreparedStatements(maxOpenPreparedStatements);
         return dataSource;
+
+        /*
+        Properties props = new Properties();
+        props.put("driverClassName", environment.getProperty("jdbc.driverClassName"));
+        props.put("url", environment.getProperty("jdbc.url"));
+        props.put("username", environment.getProperty("jdbc.username"));
+        props.put("password", environment.getProperty("jdbc.password"));
+        return DruidDataSourceFactory.createDataSource(props);
+        */
+
     }
 }
