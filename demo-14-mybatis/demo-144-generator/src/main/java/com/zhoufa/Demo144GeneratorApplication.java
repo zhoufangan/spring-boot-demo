@@ -4,12 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author zhoufangan
+ * @author Created by zhoufangan on 2017/5/22.
  */
 @SpringBootApplication
-public class Demo143AllAnnotationApplication {
+public class Demo144GeneratorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Demo143AllAnnotationApplication.class, args);
+        SpringApplication.run(Demo144GeneratorApplication.class, args);
     }
+
 }
