@@ -18,7 +18,15 @@ public class SINAAccountStatementService {
     @Autowired
     private SINAAccountStatementMapper mapper;
 
-    public void insertBatchAccountStatement(List<SINAAccountStatement> data) {
+    public SINAAccountStatement selectByPrimary(int id) {
+        return mapper.selectByPrimary(id);
+    }
+
+    public List<SINAAccountStatement> selectByPrimaries(List<Integer> primaries) {
+        return mapper.selectByPrimaries(primaries);
+    }
+
+    public void insertBatch(List<SINAAccountStatement> data) {
         mapper.insertBatch(data);
     }
 
