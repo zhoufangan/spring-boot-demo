@@ -1,5 +1,6 @@
 package com.zhoufa.custom.service;
 
+import com.google.common.collect.Lists;
 import com.zhoufa.autogeneration.entity.SINAAccountStatement;
 import com.zhoufa.autogeneration.entity.SINAAccountStatementExample;
 import com.zhoufa.autogeneration.mapper.SINAAccountStatementMapper;
@@ -39,17 +40,37 @@ public class SINAAccountStatementService {
 
         SINAAccountStatementExample example = new SINAAccountStatementExample();
         example.setOrderByClause("FID desc");
-        example.createCriteria().andCreateTimeBetween(start, end);
+        example.setDistinct(true);
+        example.createCriteria().andCreateTimeBetween(start, end)
+                .andIsDeleteEqualTo(false)
+                .andPayerNameLike("%客户%")
+                .andBusinessTypeIn(Lists.newArrayList(1, 20))
+                .andOrderStatusEqualTo(1);
         return autoMapper.countByExample(example);
     }
 
-    public int deleteByExample(SINAAccountStatementExample example) {
+    public List<SINAAccountStatement> selectByExample(String startTime, String endTime) {
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+        Date start = null;
+        Date end = null;
 
-        return 0;
-    }
+        try {
+            start = fmt.parse(startTime);
+            end = fmt.parse(endTime);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
-    public List<SINAAccountStatement> selectByExample(SINAAccountStatementExample example) {
-        return null;
+        SINAAccountStatementExample example = new SINAAccountStatementExample();
+        example.setOrderByClause("FID desc");
+        example.createCriteria()
+                .andCreateTimeBetween(start, end)
+                .andIsDeleteEqualTo(false)
+                .andPayerNameLike("%客户%")
+                .andBusinessTypeIn(Lists.newArrayList(1, 20))
+                .andOrderStatusEqualTo(1);
+
+        return autoMapper.selectByExample(example);
     }
 
     public int updateByExampleSelective(@Param("record") SINAAccountStatement record, @Param("example") SINAAccountStatementExample example) {
