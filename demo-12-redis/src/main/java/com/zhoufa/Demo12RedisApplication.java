@@ -15,7 +15,7 @@ import java.util.Set;
 
 @SpringBootApplication(
         scanBasePackages = {
-                "com.zhofua"
+                "com.zhoufa"
         },
         exclude = {
                 MongoAutoConfiguration.class,
@@ -80,7 +80,7 @@ public class Demo12RedisApplication {
 
         JedisSentinelPool pool = new JedisSentinelPool(masterName, sentinels, poolConfig, timeout, password);
 
-        Jedis  jedis = pool.getResource();
+        Jedis jedis = pool.getResource();
 
         Pipeline pipeline = jedis.pipelined();
         pipeline.set("name", "周方安");
@@ -94,7 +94,7 @@ public class Demo12RedisApplication {
         int timeout = 0;
         String password = "";
         JedisSentinelPool pool = new JedisSentinelPool(masterName, sentinels, poolConfig, timeout, password);
-        Jedis  jedis = pool.getResource();
+        Jedis jedis = pool.getResource();
         return jedis;
     }
 
