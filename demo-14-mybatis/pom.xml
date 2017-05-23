@@ -11,7 +11,6 @@
         <module>demo-146-criteria</module>
     </modules>
 
-
     <parent>
         <groupId>com.zhoufa</groupId>
         <artifactId>spring-boot-demo</artifactId>

@@ -22,7 +22,7 @@ public interface SINAAccountStatementCustomMapper {
             "</foreach>",
             "</script>"
     })
-    @ResultMap("com.zhoufa.autogeneration.entity.SINAAccountStatement.BaseResultMap")
+    @ResultMap("com.zhoufa.autogeneration.mapper.SINAAccountStatementMapper.BaseResultMap")
     List<SINAAccountStatement> selectByPrimaries(List<Integer> primaries);
 
     @Insert({
@@ -75,6 +75,6 @@ public interface SINAAccountStatementCustomMapper {
     void insertBatch(List<SINAAccountStatement> data);
 
     @Select("select * from z_SINAAccountStatement where FAccountStatementBatchNoId=#{batchId}")
-    @ResultMap("com.zhoufa.autogeneration.entity.SINAAccountStatement.BaseResultMap")
+    @ResultMap("com.zhoufa.autogeneration.mapper.SINAAccountStatementMapper.BaseResultMap")
     List<SINAAccountStatement> queryByBatchId(Integer batchId);
 }
